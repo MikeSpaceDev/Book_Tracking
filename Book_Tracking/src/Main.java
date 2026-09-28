@@ -20,7 +20,9 @@ public class Main{
         do{
             System.out.println("What do you want to do? \n" +
                     "1 - view the library \n" +
-                    "2 - add book in library");
+                    "2 - add book in library\n" +
+                    "3 - remove a book from the library\n" +
+                    "4 - find a book");
 
             int act = Integer.parseInt(scan.nextLine());
 
@@ -30,6 +32,12 @@ public class Main{
             else if(act == 2){
                 addBook(scan, listBooks);
                 showLibrary(listBooks);
+            }
+            else if(act == 3){
+                System.out.println("Sorry? Function don't ready..");
+            }
+            else if(act == 4){
+                System.out.println("Sorry? Function don't ready..");
             }
 
             System.out.println("Do you want continue?\n" +
@@ -46,7 +54,8 @@ public class Main{
         System.out.println("Hello, you have in your library:");
         System.out.println();
         for(Book bk: lb){
-            System.out.println("Book title - " + bk.getName() + ", released in " + bk.getYear());
+            System.out.println("Book title - " + bk.getName() + ", released in " + bk.getYear() + ". This book is " +
+                                bk.getGenre() + ".");
             System.out.println("-----------------------------");
         }
     }
