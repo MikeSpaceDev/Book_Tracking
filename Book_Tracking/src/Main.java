@@ -27,17 +27,24 @@ public class Main{
             int act = Integer.parseInt(scan.nextLine());
 
             if(act == 1){
-                showLibrary(listBooks);
+                Librarian.showLibrary(listBooks);
             }
             else if(act == 2){
-                addBook(scan, listBooks);
-                showLibrary(listBooks);
+                Librarian.addBook(scan, listBooks);
+                Librarian.showLibrary(listBooks);
             }
             else if(act == 3){
-                System.out.println("Sorry? Function don't ready..");
+                Librarian.delBook(scan, listBooks);
+                Librarian.showLibrary(listBooks);
             }
             else if(act == 4){
-                System.out.println("Sorry? Function don't ready..");
+                Book bk = Librarian.searchBook(scan, listBooks);
+                if(bk != null){
+                    Librarian.showBook(bk);
+                }
+                else{
+                    System.out.println("No matches found.");
+                }
             }
 
             System.out.println("Do you want continue?\n" +
@@ -50,34 +57,7 @@ public class Main{
 
     }
 
-    static void showLibrary(List<Book> lb){
-        System.out.println("Hello, you have in your library:");
-        System.out.println();
-        for(Book bk: lb){
-            System.out.println("Book title - " + bk.getName() + ", released in " + bk.getYear() + ". This book is " +
-                                bk.getGenre() + ".");
-            System.out.println("-----------------------------");
-        }
-    }
 
-    static void addBook(Scanner scan, List<Book> lb){
-        System.out.println("ADDING A BOOK:");
-        System.out.println("-----------------------------");
 
-        System.out.println("Enter the title:");
-        String title = scan.nextLine();
-
-        System.out.println("Enter the author:");
-        String author = scan.nextLine();
-
-        System.out.println("Enter the genre:");
-        String genre = scan.nextLine();
-
-        System.out.println("Enter the year:");
-        int year = Integer.parseInt(scan.nextLine());
-
-        lb.add(new Book(title, author, genre, year));
-
-    }
 }
 
