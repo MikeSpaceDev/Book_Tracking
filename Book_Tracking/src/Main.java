@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,6 +16,16 @@ public class Main{
         listBooks.add(book1);
         listBooks.add(book2);
         listBooks.add(book3);
+
+        File file = new File("All books");
+        try (PrintWriter pw = new PrintWriter(file)){
+            for (Book bk: listBooks){
+                pw.println(bk.getName() + "|" + bk.getAuthor() + "|" + bk.getGenre() + "|" + bk.getYear());
+            }
+            System.out.println("Files successfully written.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Something went wrong with the disk. " + e.getMessage());
+        }
 
         boolean cont = false;
 
@@ -53,6 +66,15 @@ public class Main{
             act = Integer.parseInt(scan.nextLine());
             cont = (act == 1);
         }while(cont);
+
+        try (PrintWriter pw = new PrintWriter(file)){
+            for (Book bk: listBooks){
+                pw.println(bk.getName() + "|" + bk.getAuthor() + "|" + bk.getGenre() + "|" + bk.getYear());
+            }
+            System.out.println("Files successfully written.");
+        } catch (FileNotFoundException e) {
+            System.out.println("Something went wrong with the disk. " + e.getMessage());
+        }
 
 
     }
