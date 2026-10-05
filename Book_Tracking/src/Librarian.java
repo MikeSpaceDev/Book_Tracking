@@ -49,7 +49,7 @@ public class Librarian {
     }
 
     static void showLibrary(List<Book> lb){
-        System.out.println("Hello, you have in your library:");
+        System.out.println("You have in your library:");
         System.out.println();
         for(Book bk: lb){
             System.out.println("Book title - " + bk.getName() + ", released in " + bk.getYear() + ". This book is " +
@@ -77,4 +77,5 @@ public class Librarian {
         lb.add(new Book(title, author, genre, year));
 
     }
+
 }
