@@ -17,6 +17,7 @@ public class Main{
 
 
         boolean cont = false;
+        boolean contIn = true;
 
         Scanner scan = new Scanner(System.in);
         do{
@@ -59,21 +60,29 @@ public class Main{
                     cont = true;
                 }
 
-                System.out.println("Do you want continue?\n" +
-                        "1 - yes\n" +
-                        "other number - exit");
-                act = Integer.parseInt(scan.nextLine());
-                cont = (act == 1);
 
             }catch(NumberFormatException e) {
                 System.out.println("Сommand not found!");
                 cont = true;
             }
 
+            while(contIn){
+                try {
+                    System.out.println("Do you want continue?\n" +
+                            "1 - yes\n" +
+                            "other number - exit");
+                    int actIn = Integer.parseInt(scan.nextLine());
+                    contIn = false;
+                    cont = (actIn == 1);
+                }
+                catch (NumberFormatException e){
+                    System.out.println("Сommand not found!");
+                }
+            }
+
         }while(cont);
 
         FileManager.wrideInFile(listBooks);
-
 
     }
 
