@@ -1,7 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,7 +20,7 @@ public class FileManager {
         }
     }
 
-    static void wrideInFile(List<Book> lb){
+    static void writeInFile(List<Book> lb){
         try (PrintWriter pw = new PrintWriter(file)){
             for (Book bk: lb){
                 pw.println(bk.getName() + "|" + bk.getAuthor() + "|" + bk.getGenre() + "|" + bk.getYear());

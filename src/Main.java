@@ -1,6 +1,4 @@
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -11,13 +9,12 @@ public class Main{
 
         List<Book> listBooks = new ArrayList<>();
 
-        File file = new File("All books");
 
         FileManager.readFile(listBooks);
 
 
-        boolean cont = false;
-        boolean contIn = true;
+        boolean keepRunning = false;
+        boolean askAgain = true;
 
         Scanner scan = new Scanner(System.in);
         do{
@@ -57,32 +54,32 @@ public class Main{
                     break;
                 } else{
                     System.out.println("Сommand not found!");
-                    cont = true;
+                    keepRunning = true;
                 }
 
 
             }catch(NumberFormatException e) {
                 System.out.println("Сommand not found!");
-                cont = true;
+                keepRunning = true;
             }
 
-            while(contIn){
+            while(askAgain){
                 try {
                     System.out.println("Do you want continue?\n" +
                             "1 - yes\n" +
                             "other number - exit");
                     int actIn = Integer.parseInt(scan.nextLine());
-                    contIn = false;
-                    cont = (actIn == 1);
+                    askAgain = false;
+                    keepRunning = (actIn == 1);
                 }
                 catch (NumberFormatException e){
                     System.out.println("Сommand not found!");
                 }
             }
 
-        }while(cont);
+        }while(keepRunning  );
 
-        FileManager.wrideInFile(listBooks);
+        FileManager.writeInFile(listBooks);
 
     }
 

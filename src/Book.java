@@ -7,12 +7,12 @@ public class Book {
     private final int ID;
 
 
-    public Book(String name, String author, String genre, int data){
+    public Book(String name, String author, String genre, int year){
         this.ID = IDcounter;
         this.name = name;
         this.author = author;
         this.genre = genre;
-        this.year = data;
+        this.year = year;
         IDcounter++;
     }
 
