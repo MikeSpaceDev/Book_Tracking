@@ -34,3 +34,5 @@ bin/
 *.iml
 
 lib/*.jar
+*.db
+*.sqlite
