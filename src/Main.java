@@ -7,6 +7,9 @@ public class Main{
     public static void main(String[] args) {
         System.out.println("Hello my favorite user");
 
+        DatabaseManager db = new DatabaseManager();
+        db.createTable();
+
         List<Book> listBooks = new ArrayList<>();
 
 
