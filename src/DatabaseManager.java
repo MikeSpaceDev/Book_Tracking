@@ -1,5 +1,6 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.Statement;
 
 public class DatabaseManager {
@@ -22,6 +23,22 @@ public class DatabaseManager {
         catch(Exception e){
             e.printStackTrace();
 
+        }
+    }
+
+    public void addBook(Book book){
+        String addBookSQL = "INSERT INTO Books(name, author, genre, year) VALUES (?, ?, ?, ?)";
+        try(Connection conn = DriverManager.getConnection(url);
+            PreparedStatement pstmt  = conn.prepareStatement(addBookSQL)){
+            pstmt.setString(1, book.getName());
+            pstmt.setString(2, book.getAuthor());
+            pstmt.setString(3, book.getGenre());
+            pstmt.setInt(4, book.getYear());
+
+            pstmt.executeUpdate();
+        }
+        catch(Exception e){
+            e.printStackTrace();
         }
     }
 
