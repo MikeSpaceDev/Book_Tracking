@@ -39,7 +39,7 @@ public class Book {
         return name;
     }
 
-    public int getID() {
+    public int getId() {
         return id;
     }
 }

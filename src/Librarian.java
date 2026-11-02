@@ -30,7 +30,6 @@ public class Librarian {
         System.out.println();
 
         String title = scan.nextLine();
-        int index = -1;
 
         boolean del = db.delBook(title);
 

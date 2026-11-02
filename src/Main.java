@@ -1,20 +1,12 @@
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.Scanner;
 
 public class Main{
     public static void main(String[] args) {
-        System.out.println("Hello my favorite user");
-
         DatabaseManager db = new DatabaseManager();
         db.createTable();
 
-        List<Book> listBooks = new ArrayList<>();
-
-
-        FileManager.readFile(listBooks);
-
+        System.out.println("Hello my favorite user");
 
         boolean keepRunning = false;
         boolean askAgain = true;
@@ -70,13 +62,12 @@ public class Main{
                     keepRunning = (actIn == 1);
                 }
                 catch (NumberFormatException e){
-                    System.out.println("Сommand not found!");
+                    System.out.println("Command not found!");
                 }
             }
 
-        }while(keepRunning  );
+        }while(keepRunning);
 
-        FileManager.writeInFile(listBooks);
 
     }
 

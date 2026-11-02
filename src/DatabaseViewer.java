@@ -1,8 +1,6 @@
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
-public class ConnectionTest {
+public class DatabaseViewer {
     public static void main(String[] args) {
           final String url ="jdbc:sqlite:library.db";
 

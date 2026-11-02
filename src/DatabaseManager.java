@@ -8,7 +8,7 @@ public class DatabaseManager {
     public void createTable(){
         try(Connection conn = DriverManager.getConnection(url);
             Statement stmt  = conn.createStatement()){
-            System.out.println("Сonnection established");
+            System.out.println("Connection established");
             String createTableSql = """
                                     CREATE TABLE IF NOT EXISTS Books (
                                     id INTEGER PRIMARY KEY AUTOINCREMENT,
