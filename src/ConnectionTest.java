@@ -1,13 +1,29 @@
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ConnectionTest {
     public static void main(String[] args) {
-        final String url = "jdbc:sqlite:test.db";
+          final String url ="jdbc:sqlite:library.db";
+
+//        DatabaseManager db = new DatabaseManager();
+//        List<Book> libriary = new ArrayList<>();
+//        FileManager.readFile(libriary);
+//
+//        for(Book bk: libriary){
+//            db.addBook(bk);
+//        }
+
+        final String sql = "SELECT * FROM Books";
         try(Connection conn = DriverManager.getConnection(url);
                 Statement stmt = conn.createStatement()){
-                System.out.println("All good");
+                ResultSet rs = stmt.executeQuery(sql);
+                while (rs.next()){
+                    System.out.println(
+                            rs.getInt("id") + " | " + rs.getString("name") + " | " +
+                            rs.getString("author") + " | " + rs.getString("genre") + " | " +
+                            rs.getInt("year"));
+                }
         }
         catch (Exception e){
             e.printStackTrace();

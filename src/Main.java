@@ -33,24 +33,18 @@ public class Main{
                 int act = Integer.parseInt(scan.nextLine());
 
                 if(act == 1){
-                    Librarian.showLibrary(listBooks);
+                    Librarian.showLibrary();
                 }
                 else if(act == 2){
-                    Librarian.addBook(scan, listBooks);
-                    Librarian.showLibrary(listBooks);
+                    Librarian.addBook(scan);
+                    Librarian.showLibrary();
                 }
                 else if(act == 3){
-                    Librarian.delBook(scan, listBooks);
-                    Librarian.showLibrary(listBooks);
+                    Librarian.delBook(scan);
+                    Librarian.showLibrary();
                 }
                 else if(act == 4){
-                    Book bk = Librarian.searchBook(scan, listBooks);
-                    if(bk != null){
-                        Librarian.showBook(bk);
-                    }
-                    else{
-                        System.out.println("No matches found.");
-                    }
+                    Librarian.searchBook(scan);
                 }
 
                 else if (act == 5) {

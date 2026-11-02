@@ -2,54 +2,57 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Librarian {
-    static Book searchBook(Scanner scan, List<Book> lb){
+
+    private static DatabaseManager db = new DatabaseManager();
+
+    static void searchBook(Scanner scan){
         System.out.println("Enter book title or part of the name");
         System.out.println();
 
         String title = scan.nextLine();
 
+        List<Book> foundBooks = db.searchBook(title);
 
-        for (Book bk: lb){
-            if(bk.getName().contains(title)){
-                return bk;
+        if (foundBooks.isEmpty()){
+            System.out.println("No matches found.");
+        }
+        else {
+            System.out.println("Here is your book(s):");
+            for (Book bk: foundBooks){
+                showBook(bk);
             }
         }
-        return null;
+
     }
 
-    static void delBook(Scanner scan, List<Book> lb){
+    static void delBook(Scanner scan){
         System.out.println("Which book do you want to delete ");
         System.out.println();
 
         String title = scan.nextLine();
         int index = -1;
 
-        for (Book bk: lb){
-            if(bk.getName().equals(title)){
-                index = lb.indexOf(bk);
-                break;
-            }
-        }
+        boolean del = db.delBook(title);
 
-        if(index >= 0){
-            lb.remove(index);
+        if(!del){
+            System.out.println("This book was not found...");
         }
         else{
-            System.out.println("This book was not found...");
+            System.out.println("Deletion complete.");
         }
 
     }
 
     static void showBook(Book bk){
-        System.out.println("Here is your book:");
         System.out.println("--------------------------------");
         System.out.println(bk.getName() + " - " + bk.getAuthor() + " - " + bk.getGenre());
         System.out.println("--------------------------------");
 
     }
 
-    static void showLibrary(List<Book> lb){
+    static void showLibrary(){
         System.out.println("You have in your library:");
+        List<Book> lb = db.getAllBooks();
         if(lb.isEmpty()){
             System.out.println("Library is Empty.");
         }
@@ -64,7 +67,7 @@ public class Librarian {
         }
     }
 
-    static void addBook(Scanner scan, List<Book> lb){
+    static void addBook(Scanner scan){
         System.out.println("ADDING A BOOK:");
         System.out.println("-----------------------------");
 
@@ -77,10 +80,20 @@ public class Librarian {
         System.out.println("Enter the genre:");
         String genre = scan.nextLine();
 
-        System.out.println("Enter the year:");
-        int year = Integer.parseInt(scan.nextLine());
+        int year;
+        while(true){
+            System.out.println("Enter the year:");
+            try {
+                year = Integer.parseInt(scan.nextLine());
+                break;
+            }
+            catch (NumberFormatException e){
+                System.out.println("Please enter a valid number for the year");
+            }
+        }
 
-        lb.add(new Book(title, author, genre, year));
+
+        db.addBook(new Book(title, author, genre, year));
 
     }
 

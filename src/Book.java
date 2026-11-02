@@ -3,17 +3,23 @@ public class Book {
     private final String author;
     private final String genre;
     private final int year;
-    private static int IDcounter = 1;
-    private final int ID;
+    private int id;
+
 
 
     public Book(String name, String author, String genre, int year){
-        this.ID = IDcounter;
         this.name = name;
         this.author = author;
         this.genre = genre;
         this.year = year;
-        IDcounter++;
+    }
+
+    public Book(String name, String author, String genre, int year, int id){
+        this.id = id;
+        this.name = name;
+        this.author = author;
+        this.genre = genre;
+        this.year = year;
     }
 
 
@@ -31,5 +37,9 @@ public class Book {
 
     public String getName() {
         return name;
+    }
+
+    public int getID() {
+        return id;
     }
 }
